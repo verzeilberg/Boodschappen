@@ -7,4 +7,3 @@ This is a grocery order application.
 
 Installation using Composer
 ---------------------------
-
