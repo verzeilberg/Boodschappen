@@ -1,0 +1,39 @@
+<html>
+    <div style="box-sizing: border-box;">
+        <div style="min-width:630px;max-width:630px;border: 1px solid #007299;box-sizing: border-box;">
+            <div style="background: url('<?php echo $baseurl ?>/img/email-header.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height:130px; 
+            font-size: 26px; 
+            font-family:Arial; 
+            color:#007299; 
+            text-align:center;
+            padding-top:50px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-sizing: border-box;">
+                Productsuggestie
+            </div>
+            <div style="font-size: 12px;font-family:Arial;font-weight:normal;color:#000;padding:5;box-sizing: border-box;">
+                <p style="margin-bottom:12px;padding:5px;">Beste  <strong><?php echo $name; ?></strong></p>
+                <p style="margin-bottom:12px;padding:5px;">
+                    Er is een suggestie gedaan voor een nieuw product. Om dit product te bekijken en te beoordelen klik op onderstaande link:
+                </p>
+                <p style="margin-bottom:12px; padding:5px; text-align: center">
+                    <a style="padding: 14px 24px;border: 0 none;font-weight: 700;letter-spacing: 1px;text-transform: uppercase;text-decoration: none;background: #0099cc;color: #ffffff;" target="new" title="Boodschappenlijst" href="<?php echo $url; ?>" title="bestel boodschappen">
+                        Bekijk suggestie
+                    </a>
+                </p>
+                <p style="margin-bottom:12px;padding:5px;">Alvast bedankt namens je collega</p>
+                <hr style="border-top: 1px solid #007299 !important;">
+                <p style="margin-bottom:12px;padding:5px;text-align:center;border-top:double 3px #0099cc;border-bottom:double 3px #0099cc;">
+                    <b>DISCLAIMER</b><br/>
+                    De applicatie bevind zich nog in beta fase. Mocht je dus errors of onlogische dingen tegen komen laat het me weten, dan kan ik er naar kijken.
+                    <a href="mailto:sander@verzeilberg.nl" title="sander@verzeilberg.nl">sander@verzeilberg</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</html>

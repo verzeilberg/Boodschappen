@@ -1,0 +1,92 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->translate('Boodschappen bestel applicatie'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicons/favicon.ico'))
+                ->prependStylesheet($this->basePath('css/style.css'))
+                ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+                ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+        ?>
+
+        <!-- Scripts -->
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->basePath('js/bootstrap.min.js'))
+                ->prependFile($this->basePath('js/jquery.min.js'))
+                ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+        ;
+        ?>
+
+    </head>
+    <body>
+        <div class="container" id="mainContainer">
+            <?php
+            if ($this->identity() && $this->identity()->getRoles()[0]->getRoleId() != 'guest'):
+                ?>
+                <nav class="navbar navbar-default">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <?php
+                        if ($this->identity() && $this->identity()->getRoles()[0]->getRoleId() != 'guest'):
+                            echo $this->navigation('navigation')
+                                    ->menu()
+                                    ->setPartial('partial/menu_guest')
+                                    ->setUlClass('nav navbar-nav navbar-left')
+                                    ->render();
+                        endif;
+                        ?>
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <?php if ($this->identity() && $this->identity()->getRoles()[0]->getRoleId() == 'admin'): ?>
+                                <li><a href="<?php echo $this->url('siteUserAdmin') ?>">Admin</a></li>
+                                <li><a href="<?php echo $this->url('zfcadmin') ?>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+                            <?php endif; ?>
+                            <li><a href="<?php echo $this->url('zfcuser/logout') ?>"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
+
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </nav>
+            <?php endif; ?>
+            <?php
+            echo $this->navigation('navigation')
+                    ->breadcrumbs()
+                    ->setPartial('partial/breadcrumb')
+                    ->setMinDepth(0);
+            ?>
+            <?php echo $this->content; ?>
+            <?php
+            $flashMessenger = $this->flashMessenger()
+                    ->setMessageOpenFormat(
+                            '<div%s>
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+						&times;
+					</button>
+				<ul><li>')
+                    ->setMessageSeparatorString('</li><li>')
+                    ->setMessageCloseString('</li></ul></div>');
+            ?>
+            <?php
+            echo $this->flashMessenger()->render('error', array('alert', 'alert-dismissable', 'alert-danger'));
+            echo $this->flashMessenger()->render('info', array('alert', 'alert-dismissable', 'alert-info'));
+            echo $this->flashMessenger()->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+            echo $this->flashMessenger()->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+            ?>
+            <hr>
+            <footer>
+                <p>&copy; 2016 - <?php echo date('Y') ?> by <a href="http://www.verzeilberg.nl" title="verzeilberg">verzeilberg.nl</a>. <?php echo $this->translate('All rights reserved.') ?></p>
+            </footer>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

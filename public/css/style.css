@@ -1,0 +1,537 @@
+body {
+
+    padding-top: 60px;
+
+    padding-bottom: 40px;
+
+    background-image: url(../img/background.jpg);
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    background-position: 0 0;
+
+}
+
+
+
+div#mainContainer {
+
+    background:#fff;
+
+    padding-top:20px;
+
+    padding-bottom:20px;
+
+    -webkit-border-radius: 5px;
+
+    -moz-border-radius: 5px;
+
+    border-radius: 5px;
+
+    border:1px solid #e7e7e7;
+
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(231,231,231,1);
+
+    -moz-box-shadow: 1px 1px 5px 0px rgba(231,231,231,1);
+
+    box-shadow: 1px 1px 5px 0px rgba(231,231,231,1);
+
+}
+
+div#productsTable, div#productsTableSearchResult {
+    min-height:500px;
+    max-height:500px;
+    overflow-y: auto;
+}
+
+table#productTable {
+
+    margin:20px 0;
+}
+
+
+
+table#productTable tr td {
+
+    line-height:30px;
+
+    vertical-align: middle;
+
+}
+
+input#search {
+    height:39px;
+}
+
+label {
+
+    text-align:left !important;
+
+}
+
+
+
+ol.breadcrumb {
+
+    margin-top:0;
+
+    padding-top:0;
+
+    padding-left:0;
+
+    background-color:#fff;
+
+}
+
+
+
+/* Product list add products */
+
+table#productList, div#productsTableSearchResult {
+
+    display:none;
+
+}
+
+
+
+span.addProductToList, span.addProduct, span.removeProduct {
+
+    cursor: pointer;
+
+}
+
+
+
+span.addProduct, span.removeProduct {
+
+    font-size: 20px;
+
+    line-height:28px;
+
+}
+
+
+
+/* End product list add products */
+
+
+
+/* Edit product */
+
+.imagePlaceholder img {
+
+    margin-left:auto;
+
+    margin-right:auto;
+
+}
+
+
+
+div.imageOptions {
+
+    min-width:100%;
+
+    padding-top: 5px;
+
+    padding-bottom:5px;
+
+}
+
+
+
+div.imageOptions span{
+
+    cursor: pointer;
+
+    font-size:16px;
+
+}
+
+
+
+.btn-file {
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.btn-file input[type=file] {
+
+    position: absolute;
+
+    top: 0;
+
+    right: 0;
+
+    min-width: 100%;
+
+    min-height: 100%;
+
+    font-size: 100px;
+
+    text-align: right;
+
+    filter: alpha(opacity=0);
+
+    opacity: 0;
+
+    outline: none;
+
+    background: white;
+
+    cursor: inherit;
+
+    display: block;
+
+}
+
+
+
+/* End edit product */
+
+
+
+/* Flash alert messages */
+
+.alert {
+
+    margin-top:15px;
+
+}
+
+/* End flash alert messages */
+
+
+
+/* form */
+
+textarea {
+
+    min-height:100px;
+
+    resize: none;
+
+}
+
+
+
+.currencyinput {
+
+    position:relative;
+
+}
+
+.currency {
+
+    position:absolute;
+
+    top:7px;
+
+    left:12px;
+
+    z-index:9999;
+
+}
+
+
+
+.currencyinput input {
+
+    padding-left:25px;
+
+}
+
+
+
+/* Footer */
+
+footer a {
+
+    color: #000;
+
+    text-decoration:underline;
+
+}
+
+
+
+footer a:hover {
+
+    color: #000;
+
+    text-decoration:none;
+
+}
+
+/* end footer */
+
+
+
+/* Sortable */
+
+.placeholder {
+
+    border: 1px solid green;
+
+    background-color: white;
+
+    -webkit-box-shadow: 0px 0px 10px #888;
+
+    -moz-box-shadow: 0px 0px 10px #888;
+
+    box-shadow: 0px 0px 10px #888;
+
+}
+
+.tile {
+
+
+
+}
+
+.grid {
+
+    margin-top: 1em;
+
+}
+
+/* End sortable */
+
+
+
+/* Gallerly */
+
+.img-thumbnails .img-thumbnail {
+
+    margin-top: 15px;
+
+}
+
+
+
+/* Product facts */
+
+.productFactTrigger {
+
+    cursor: pointer;
+
+    border:1px solid #e7e7e7;
+
+    color:#000;
+
+    font-weight: lighter;
+
+    padding:5px;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,e5e5e5+100;White+3D */
+
+    background: #ffffff; /* Old browsers */
+
+    background: -moz-linear-gradient(top,  #ffffff 0%, #e5e5e5 100%); /* FF3.6-15 */
+
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* Chrome10-25,Safari5.1-6 */
+
+    background: linear-gradient(to bottom,  #ffffff 0%,#e5e5e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+
+
+
+
+
+}
+
+
+
+.productFactTrigger span {
+
+    font-size: 10px;
+
+    line-height:20px;
+
+}
+
+
+
+
+
+.productFactTriggerDescription {
+
+    border-bottom: 1px solid #e7e7e7;
+
+    border-left: 1px solid #e7e7e7;
+
+    border-right: 1px solid #e7e7e7;
+
+    display:none;
+
+    padding:5px;
+
+}
+
+
+
+.right {
+
+    float:right;
+
+}
+
+
+
+
+
+input:-webkit-autofill,
+
+input:-webkit-autofill:hover, 
+
+input:-webkit-autofill:focus
+
+input:-webkit-autofill, 
+
+textarea:-webkit-autofill,
+
+textarea:-webkit-autofill:hover
+
+textarea:-webkit-autofill:focus,
+
+select:-webkit-autofill,
+
+select:-webkit-autofill:hover,
+
+select:-webkit-autofill:focus {
+
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+
+}
+
+
+
+.loginForm h1 {
+
+    text-align: center;
+
+    color: #428bca;
+
+    font-weight:bolder;
+
+}
+
+
+
+.loginForm #credential, .loginForm #identity {
+
+    border: none;
+
+    border-bottom:3px solid #428bca;
+
+    background: #ffffff;
+
+    -webkit-border-radius: 0;
+
+    -moz-border-radius: 0;
+
+    border-radius: 0;
+
+}
+
+
+
+.loginForm #credential:focus, .loginForm #identity:focus {
+
+    background-color: #ffffff !important;
+
+    outline: none;
+
+    box-shadow:none;
+
+    border-color:transparent;
+
+}
+
+/* Add product */
+input[type=checkbox] {    
+    margin-right:10px;
+}
+/* End Add product */
+
+/* Checkboxes */
+/* Base for label styling */
+#searchProductGroups [type="checkbox"]:not(:checked),
+#searchProductGroups [type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+}
+#searchProductGroups [type="checkbox"]:not(:checked) + label,
+#searchProductGroups [type="checkbox"]:checked + label {
+    position: relative;
+    padding-left: 1.95em;
+    cursor: pointer;
+}
+
+/* checkbox aspect */
+#searchProductGroups [type="checkbox"]:not(:checked) + label:before,
+#searchProductGroups [type="checkbox"]:checked + label:before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 1.25em; height: 1.25em;
+    border: 2px solid #ccc;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+}
+/* checked mark aspect */
+#searchProductGroups [type="checkbox"]:not(:checked) + label:after,
+#searchProductGroups [type="checkbox"]:checked + label:after {
+    content: '✔';
+    position: absolute;
+    top: .1em; left: .3em;
+    font-size: 1.3em;
+    line-height: 0.8;
+    color: #09ad7e;
+    transition: all .2s;
+}
+/* checked mark aspect changes */
+#searchProductGroups [type="checkbox"]:not(:checked) + label:after {
+    opacity: 0;
+    transform: scale(0);
+}
+#searchProductGroups [type="checkbox"]:checked + label:after {
+    opacity: 1;
+    transform: scale(1);
+    left: 0.1em;
+}
+/* disabled checkbox */
+#searchProductGroups [type="checkbox"]:disabled:not(:checked) + label:before,
+#searchProductGroups [type="checkbox"]:disabled:checked + label:before {
+    box-shadow: none;
+    border-color: #bbb;
+    background-color: #ddd;
+}
+#searchProductGroups [type="checkbox"]:disabled:checked + label:after {
+    color: #999;
+}
+#searchProductGroups [type="checkbox"]:disabled + label {
+    color: #aaa;
+}
+/* accessibility */
+#searchProductGroups [type="checkbox"]:checked:focus + label:before,
+#searchProductGroups [type="checkbox"]:not(:checked):focus + label:before {
+    border: 2px dotted blue;
+}
+
+/* hover style just for information */
+#searchProductGroups label:hover:before {
+    border: 2px solid #4778d9!important;
+}
+
+
+
+/* End Checkboxes */

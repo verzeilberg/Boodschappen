@@ -1,0 +1,137 @@
+<div class="row">
+    <hgroup class="col-sm-12 col-md-12 col-lg-12">
+        <h1>Product wijzigen</h1>
+    </hgroup>
+</div>
+<?php
+$form->setAttributes(array(
+    'class' => 'form-horizontal',
+    'enctype' => 'multipart/form-data'
+));
+?>
+<?php echo $this->form()->openTag($form); ?>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">    
+        <div class="form-group">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <button type="submit" id="submit" class="btn btn-info">Opslaan</button> <a href="<?php echo $this->url('groceryProduct'); ?>" class="btn btn-default" title="Annuleren">Annuleren</a>
+            </div>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('productNumber')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formText($form->get('productNumber')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('name')) > 0 ? $form->getMessages('name')['isEmpty'] : '&nbsp;' ) ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('name')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formText($form->get('name')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('name')) > 0 ? $form->getMessages('name')['isEmpty'] : '&nbsp;' ) ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('description')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formTextarea($form->get('description')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('name')) > 0 ? $form->getMessages('name')['isEmpty'] : '&nbsp;' ) ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('price')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <span class="currencyinput"><span class="currency">&euro;</span><?php echo $this->formNumber($form->get('price')); ?></span>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('price')) > 0 ? $form->getMessages('price')['isEmpty'] : '&nbsp;' ) ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('productImage')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <span class="btn btn-default btn-file">
+                    Selecteer bestand...<?php echo $this->formFile($form->get('productImage')); ?>
+                </span>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('productImage')) > 0 ? $form->getMessages('productImage')['isEmpty'] : '&nbsp;' ) ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formLabel($formProductImage->get('nameImage')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formText($formProductImage->get('nameImage')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($formProductImage->getMessages('nameImage')) > 0 ? $formProductImage->getMessages('nameImage') : '&nbsp;' ) ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formLabel($formProductImage->get('alt')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formText($formProductImage->get('alt')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($formProductImage->getMessages('alt')) > 0 ? $formProductImage->getMessages('alt') : '&nbsp;' ) ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formLabel($formProductImage->get('descriptionImage')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formText($formProductImage->get('descriptionImage')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($formProductImage->getMessages('descriptionImage')) > 0 ? $formProductImage->getMessages('descriptionImage') : '&nbsp;' ) ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 col-md-4 col-lg-4 control-label">Product groep(en)</label>
+            <div class="col-sm-8 col-md-8 col-lg-8 checkbox">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <?php echo $this->formMultiCheckbox($form->get('productGroups')); ?>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <?php echo (count($form->getMessages('productGroups')) > 0 ? $form->getMessages('productGroups')['isEmpty'] : '&nbsp;' ) ?>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <button type="submit" id="submit" class="btn btn-info">Opslaan</button> <a href="<?php echo $this->url('groceryProduct'); ?>" class="btn btn-default" title="Annuleren">Annuleren</a>
+            </div>
+        </div>
+        <?php echo $this->form()->closeTag($form); ?>
+    </div>
+</div>
+<div class="row">
+    <hgroup class="col-sm-12 col-md-12 col-lg-12">
+        <h1>Product afbeeldingen</h1>
+    </hgroup>
+</div>
+<div class="row">
+    <?php $images = $product->getProductImages(); ?>
+    <div class="grid span8" id="sortableItems">
+        <?php foreach ($images AS $image) { ?>
+            <div class="span2 tile col-sm-3 col-md-3 col-lg-3">
+                <?php foreach ($image->getProductImageTypes('150x150') AS $imageType) { ?>
+
+                    <div class="imagePlaceholder text-center" id="productImage<?php echo $image->getProductImageId(); ?>">
+                        <img class="img-responsive" src="/<?php echo $imageType->getFolder() . $imageType->getFileName() ?>" alt=""<?php echo $product->getName(); ?> />
+                        <div class="imageOptions">
+                            <span class="glyphicon glyphicon-pencil changeImage" data-productid="<?php echo $product->getProductId(); ?>" data-productimageid="<?php echo $image->getProductImageId(); ?>" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-search viewImage" data-productid="<?php echo $product->getProductId(); ?>" data-productimageid="<?php echo $image->getProductImageId(); ?>" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-trash removeImage" data-productid="<?php echo $product->getProductId(); ?>" data-productimageid="<?php echo $image->getProductImageId(); ?>" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        <?php } ?>
+    </div>
+</div>

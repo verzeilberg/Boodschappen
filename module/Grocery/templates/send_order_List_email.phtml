@@ -1,0 +1,47 @@
+<html>
+    <div class="page">
+        <div style="min-width:630px;">
+            <div style="font-size: 26px; font-family:Arial; font-weight:bold; color:#014a8c;  ">
+                Boodschappenijst
+            </div>
+        </div>
+        <br/>
+        <p>Beste  <strong><?php echo $name; ?></strong></p>
+        <p>Hieronder vind je een lijst van boodschappen die besteld moeten worden.</p>
+        <hr>
+        <table>
+            <tr>
+                <th width="75">&nbsp;</th>
+                <th>Naam</th>
+                <th>Aantal</th>
+            </tr>
+            <?php
+            foreach ($productList->getProductListDetails() AS $product) {
+                if ($product->getDeleted() == true) {
+                        continue;
+                    }
+                $image = '&nbsp;';
+                ?>
+                <?php $images = $product->getProduct()->getProductImages(); ?>
+                <?php
+                foreach ($images AS $image) {
+                    foreach ($image->getProductImageTypes('150x150') AS $imageType) {
+                        $imageURL = 'http://' . $preURL . '/'. $imageType->getFolder() . $imageType->getFileName();
+                        $image = '<img class="img-responsive" src="'. $imageURL . '" alt="' . $product->getProduct()->getName() . '" width="75" height="auto" />';
+                    }
+                    break;
+                }
+                ?>
+                <tr>
+                    <td><?php echo $image; ?></td>
+                    <td><?php echo $product->getProduct()->getName(); ?></td>
+                    <td class="text-center" id="productQuantity<?php echo $product->getProduct()->getProductId(); ?>"><?php echo $product->getQuantity(); ?></td>
+                </tr>
+            <?php } ?>
+        </table>
+        <hr>
+        <p>Veel succes ermee!</p>
+        <p>En bedankt namens al je collega's!</p>
+        <p>Groetjes,<br/><br/>Reports collega's</p>
+    </div>
+</html>

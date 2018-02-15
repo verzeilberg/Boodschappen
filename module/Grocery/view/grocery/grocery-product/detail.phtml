@@ -1,0 +1,50 @@
+<div class="row">
+    <hgroup class="col-sm-12 col-md-12 col-lg-12">
+        <h1><?php echo $this->translate('Product detail'); ?>: <?php echo $product->getName(); ?></h1>
+    </hgroup>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <p><?php echo $product->getDescription(); ?></p>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <p>&euro; <?php echo (!empty($product->getPrice())? number_format($product->getPrice(), 2, ',', '.'): '0'); ?></p>
+    </div>
+</div>
+
+<?php if(count($product->getProductFacts()) > 0) { ?>
+<h2>Weetjes</h2>
+<div class="row">
+    <?php foreach ($product->getProductFacts() AS $productFact) { ?>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="productFactTrigger" data-factid="<?php echo $productFact->getProductFactId(); ?>">
+                <?php echo $productFact->getProductFactTitle(); ?><span class="glyphicon glyphicon-chevron-down right" aria-hidden="true"></span>
+            </div>
+            <div class="productFactTriggerDescription" id="productFactDescription<?php echo $productFact->getProductFactId(); ?>">
+                <p>
+                    <?php echo $productFact->getProductFactDescription(); ?>
+                </p>
+            </div>
+        </div>
+
+    <?php } ?>
+</div>
+<?php } ?>
+<h2>Afbeeldingen</h2>
+<div class="row img-thumbnails">
+    <?php
+    $image = '';
+    ?>
+    <?php $images = $product->getProductImages(); ?>
+    <?php
+    foreach ($images AS $image) {
+        foreach ($image->getProductImageTypes('original') AS $imageType) {
+            ?>
+            <div class="col-md-4">
+                <?php
+                echo '<img class="img-thumbnail" src="/' . $imageType->getFolder() . $imageType->getFileName() . '" alt="' . $product->getName() . '"/>';
+                ?>
+            </div>
+            <?php
+        }
+    }
+    ?>
+</div>

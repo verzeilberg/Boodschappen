@@ -1,0 +1,41 @@
+<div class="row">
+    <hgroup class="col-sm-12 col-md-12 col-lg-12">
+        <h1>Product groep toevoegen</h1>
+    </hgroup>
+</div>
+<?php
+$form->setAttributes(array(
+    'class' => 'form-horizontal'
+));
+?>
+<?php echo $this->form()->openTag($form); ?>
+<div class="form-group">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <button type="submit" id="submit" class="btn btn-info">Opslaan</button> <a href="<?php echo $this->url('groceryProductGroup'); ?>" class="btn btn-default" title="Annuleren">Annuleren</a>
+    </div>
+</div>
+<div class="form-group">
+    <?php echo $this->formLabel($form->get('name')); ?>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <?php echo $this->formText($form->get('name')); ?>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <?php echo (count($form->getMessages('name')) > 1 ? $form->getMessages('name')['isEmpty'] : '&nbsp;' ) ?>
+    </div>
+</div>
+<div class="form-group">
+    <?php echo $this->formLabel($form->get('description')); ?>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <?php echo $this->formText($form->get('description')); ?>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <?php echo (count($form->getMessages('name')) > 1 ? $form->getMessages('name')['isEmpty'] : '&nbsp;' ) ?>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <button type="submit" id="submit" class="btn btn-info">Opslaan</button> <a href="<?php echo $this->url('groceryProductGroup'); ?>" class="btn btn-default" title="Annuleren">Annuleren</a>
+    </div>
+</div>
+<?php echo $this->form()->closeTag($form); ?>
+</div>

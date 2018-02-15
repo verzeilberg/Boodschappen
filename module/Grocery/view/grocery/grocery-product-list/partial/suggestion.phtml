@@ -1,0 +1,84 @@
+<div class="modal fade" id="suggestionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Voeg product toe</h2>
+                <small>Gebruik een detail pagina van een product op de website van <a title="Albert Heyn" href="https://www.ah.nl" target="new">AH</a>.<br/>
+                    VB: https://www.ah.nl/producten/product/wi220739/calve-pindakaas-pot</small>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label class="col-sm-4 col-md-4 col-lg-4 control-label" for="externalURL">URL</label>
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" value="" placeholder="URL" name="externalURL" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <button class="btn btn-primary btn-info" id="addSuggestion">Voeg suggestie toe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="suggestionModalMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2 class="modal-title">Succesvol</h2>
+            </div>
+            <div class="modal-body">
+                <p>Suggestie is toegevoegd.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+
+        $("#addSuggestion").on("click", function () {
+
+            var suggestionUrl = $('input[name="externalURL"]').val();
+
+            var ajaxURL = '/productAjax/addSuggestion';
+
+            $.ajax({
+                type: 'POST',
+                data: {
+                    suggestionUrl: suggestionUrl
+
+                },
+                url: ajaxURL,
+                contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                async: true,
+                success: function (data) {
+                    if (data.succes === true) {
+                        $('#suggestionModal').modal('hide');
+                        $('#suggestionModalMessage').modal('show');
+                    } else {
+                        $('#suggestionModal').modal('hide');
+                        //alert(data.error_message);
+                    }
+                }
+
+            });
+
+        });
+
+    });
+</script>

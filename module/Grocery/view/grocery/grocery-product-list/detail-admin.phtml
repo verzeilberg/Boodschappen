@@ -1,0 +1,149 @@
+<script>
+    $(document).ready(function () {
+<?php if ($popUp == true) { ?>
+            $("#addProducts").trigger("click");
+<?php } ?>
+    });
+</script>
+
+
+<div class="row">
+    <hgroup class="col-sm-12 col-md-12 col-lg-12">
+        <h1><?php echo $this->translate('Product list detail of weeknumber'); ?>: <?php echo $productList->getWeeknumber(); ?></h1>
+    </hgroup>
+    <hgroup class="col-sm-12 col-md-12 col-lg-12">
+        <h2><?php echo $this->translate('Products'); ?></h2>
+    </hgroup>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <?php
+        ?>
+        <table class="table table-striped table-bordered" id="productTable">
+            <tr>
+                <th width="75">&nbsp;</th>
+                <th>Productnummer</th>
+                <th>Naam</th>
+                <th class="text-center" colspan="2">Aantal</th>
+
+                <th class="text-center"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></th>
+            </tr>
+            <tbody id="bodyProductList">
+                <?php
+                foreach ($productList->getProductListDetails() AS $product) {
+                    $image = '';
+                    ?>
+                    <?php $images = $product->getProduct()->getProductImages(); ?>
+                    <?php
+                    foreach ($images AS $image) {
+                        foreach ($image->getProductImageTypes('150x150') AS $imageType) {
+                            $image = '<img class="img-responsive" src="/' . $imageType->getFolder() . $imageType->getFileName() . '" alt="' . $product->getProduct()->getName() . '" width="75" height="auto" />';
+                        }
+                        break;
+                    }
+                    ?>
+
+                    <tr id="productListDetail<?php echo $product->getId(); ?>" data-productlistdetailid="<?php echo $product->getId(); ?>">
+                        <td><?php echo $image; ?></td>
+                        <td><?php echo $product->getProduct()->getProductNumber(); ?></td>
+                        <td><?php echo $product->getProduct()->getName(); ?></td>
+                        <td class="text-center" id="productQuantity<?php echo $product->getProduct()->getProductId(); ?>"><?php echo $product->getQuantity(); ?></td>
+                        <td class="text-center">
+                            <span class="glyphicon glyphicon-circle-arrow-up addProduct" data-modus="add" data-productlistdetailid="<?php echo $product->getId(); ?>" data-link="<?php echo $this->serverUrl($this->url('groceryProductListAjax', array('action' => 'addRemoveProduct'))); ?>" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-circle-arrow-down removeProduct" data-modus="remove" data-productlistdetailid="<?php echo $product->getId(); ?>" data-link="<?php echo $this->serverUrl($this->url('groceryProductListAjax', array('action' => 'addRemoveProduct'))); ?>" aria-hidden="true"></span>
+                        </td>
+                        <td class="text-center">
+                            <a href="<?php echo $this->url('groceryProduct', array('action' => 'detail', 'id' => $product->getProduct()->getProductId())); ?>" class="btn btn-default" title="product bekijken"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                            <a href="" data-link="<?php echo $this->serverUrl($this->url('groceryProductListAjax', array('action' => 'removeProduct'))); ?>" class="btn btn-default deleteProduct" title="product verwijderen van product lijst"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                        </td>
+                    </tr>
+                    <?php
+                }
+                ?>
+            </tbody>
+        </table>
+        <p id="noProductsOnList" <?php echo (count($productList->getProductListDetails()) == 0 ? '' : 'style="display:none;"') ?>>Geen producten op deze lijst.</p>
+
+        <?php if($productList->getYear() == $year && $productList->getWeeknumber() > $weekNumber) { ?>
+        <button id="addProducts" type="button" class="btn btn-primary btn-default" data-toggle="modal" data-target="#myModal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <?php echo $this->translate('Add product(s)'); ?>
+        </button>
+        <?php } ?>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Zoek naar producten</h4>
+                <form class="form-inline">
+                    <div class="form-group has-success has-feedback">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                            <input type="text" class="form-control" value="" placeholder="Zoeken..." id="search">
+                        </div>
+                    </div>
+                    <input type="hidden" name="productListID" id="productListID" value="<?php echo $productList->getId(); ?>" />
+                    <input type="hidden" name="ajaxURL" id="ajaxURL" value="<?php echo $this->serverUrl($this->url('groceryProductListAjax', array('action' => 'searchProducts'))); ?>"/>
+                </form>
+            </div>
+            <div class="modal-body">
+                <table id="productList" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>Productnumber</th>
+                            <th>Naam</th>
+                            <th>Aantal</th>
+                            <th class="text-center"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="productlistBody">
+
+                    </tbody>
+                </table>
+                <div id="productsTable">
+                    <table id="products" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th width="75">&nbsp;</th>
+                                <th>Productnumber</th>
+                                <th>Naam</th>
+                                <th>Aantal</th>
+                                <th class="text-center"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></th>
+                            <tr>
+                        </thead>
+                        <tbody id="productsBody">
+                            <?php
+                            foreach ($products AS $product) {
+                                $image = '';
+                                ?>
+                                <?php $images = $product->getProductImages(); ?>
+                                <?php
+                                foreach ($images AS $image) {
+                                    foreach ($image->getProductImageTypes('150x150') AS $imageType) {
+                                        $image = '<img class="img-responsive" src="/' . $imageType->getFolder() . $imageType->getFileName() . '" alt="' . $product->getName() . '" width="75" height="auto" />';
+                                    }
+                                    break;
+                                }
+                                ?>
+                                <tr>
+                                    <td><?php echo $image; ?></td>
+                                    <td><?php echo $product->getProductNumber() ?></td>
+                                    <td><?php echo $product->getName() ?></td>
+                                    <td><input type="text" value="1" name="quantity<?php echo $product->getProductId(); ?>" class="form-control"/></td>
+                                    <td class="text-center"><span data-ajaxurl="<?php echo $this->serverUrl($this->url('groceryProductListAjax', array('action' => 'addProductToProductList'))); ?>" data-productlistid="<?php echo $productList->getId(); ?>" data-productid="<?php echo $product->getProductId(); ?>"  class="glyphicon glyphicon-plus addProductToList" aria-hidden="true"></span></td>
+                                <tr>
+                                    <?php
+                                }
+                                ?>
+                        </tbody>
+                    </table>
+                    <?php
+                    echo $this->paginationControl($products, 'Sliding', 'partial/paginator');
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

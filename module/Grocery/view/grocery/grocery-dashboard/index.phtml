@@ -1,0 +1,26 @@
+<div class="row">
+    <hgroup class="col-sm-12 col-md-12 col-lg-12">
+        <h1>Dashboard</h1>
+    </hgroup>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div id="curve_chart" style="width: 100%; height: 300px"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Weeknummer', 'Kosten'],
+            <?php foreach($totalCostByWeekByYear AS $weekNumber => $weekTotalCost) {
+            echo "['".$weekNumber."', ".$weekTotalCost."],";
+             } ?>
+        ]);
+        var options = {
+            title: 'Boodschappenkosten per week van het jaar <?php echo $currentYear; ?>',
+            legend: {position: 'bottom'}
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+        chart.draw(data, options);
+    }
+</script>

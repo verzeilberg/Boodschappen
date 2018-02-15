@@ -1,0 +1,200 @@
+<div class="row">
+    <hgroup class="col-sm-12 col-md-12 col-lg-12">
+        <h1>Settings</h1>
+    </hgroup>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <?php
+        $form->setAttributes(array(
+            'class' => 'form-horizontal'
+        ));
+        ?>
+        <?php echo $this->form()->openTag($form); ?>
+        <div class="form-group">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <button type="submit" id="submit" class="btn btn-info">Opslaan</button> <a href="<?php echo $this->url('grocerySettings'); ?>" class="btn btn-default" title="Annuleren">Annuleren</a>
+            </div>
+        </div>
+        <h2>Order settings</h2>
+        <hr/>
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('orderFrequency')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formSelect($form->get('orderFrequency')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('orderFrequency')) > 0 ? $form->getMessages('orderFrequency')['isEmpty'] : '&nbsp;' ) ?>
+            </div>
+        </div>
+        <div class="form-group" id="daily">
+            <?php echo $this->formLabel($form->get('orderDaily')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formText($form->get('orderDaily')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('orderDaily')) > 0 ? $form->getMessages('orderDaily') : '&nbsp;' ) ?>
+            </div>
+        </div>
+        <div class="form-group" id="weekly">
+            <?php echo $this->formLabel($form->get('orderWeekly')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formSelect($form->get('orderWeekly')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('orderWeekly')) > 0 ? $form->getMessages('orderWeekly') : '&nbsp;' ) ?>
+            </div>
+        </div>
+        <div class="form-group" id="monthly">
+            <?php echo $this->formLabel($form->get('orderMonthly')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formSelect($form->get('orderMonthly')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('orderMonthly')) > 0 ? $form->getMessages('orderMonthly') : '&nbsp;' ) ?>
+            </div>
+        </div>
+        <hr/>
+        <h2>Reminder mail settings</h2>
+        <hr/>
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('mailSenderEmail')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formEmail($form->get('mailSenderEmail')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('mailSenderEmail')) > 0 ? $form->getMessages('mailSenderEmail') : '&nbsp;' ) ?>
+            </div>
+        </div>
+        <hr/>
+        <h2>E-mail settings</h2>
+        <hr/>
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('mailSenderEmail')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formEmail($form->get('mailSenderEmail')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('mailSenderEmail')) > 0 ? $form->getMessages('mailSenderEmail') : '&nbsp;' ) ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('mailSenderName')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formText($form->get('mailSenderName')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('mailSenderName')) > 0 ? $form->getMessages('mailSenderName') : '&nbsp;' ) ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('mailReplyEmail')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formEmail($form->get('mailReplyEmail')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('mailReplyEmail')) > 0 ? $form->getMessages('mailReplyEmail') : '&nbsp;' ) ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('mailReplyName')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formText($form->get('mailReplyName')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('mailReplyName')) > 0 ? $form->getMessages('mailReplyName') : '&nbsp;' ) ?>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('defaultBudget')); ?>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo $this->formNumber($form->get('defaultBudget')); ?>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <?php echo (count($form->getMessages('defaultBudget')) > 0 ? $form->getMessages('defaultBudget') : '&nbsp;' ) ?>
+            </div>
+        </div>
+        <hr/>
+        <div class="form-group">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <button type="submit" id="submit" class="btn btn-info">Opslaan</button> <a href="<?php echo $this->url('grocerySettings'); ?>" class="btn btn-default" title="Annuleren">Annuleren</a>
+            </div>
+        </div>
+        <?php echo $this->form()->closeTag($form); ?>
+        <hr/>
+        <h2>Supermarkten</h2>
+        <hr/>
+        <button type="button" class="btn btn-primary btn-info" data-toggle="modal" data-target="#myModal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <?php echo $this->translate('Add supermarket'); ?>
+        </button>
+        <br/>
+        <br/>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Naam</th>
+                <th>Website</th>
+                <th class="text-center"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></th>
+            </tr>
+            <?php foreach ($supermarkets AS $supermarket) { ?>
+                <tr>
+                    <td><?php echo $supermarket->getName(); ?></td>
+                    <td><?php echo $supermarket->getWebsite(); ?></td>
+                    <td class="text-center">
+                        <a href="<?php echo $this->url('grocerySettings', array('action' => 'changeSupermarket', 'id' => $supermarket->getId())); ?>" class="btn btn-default" title="Supermarkt wijzigen"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                        <a href="<?php echo $this->url('grocerySettings', array('action' => 'deleteSupermarket', 'id' => $supermarket->getId())); ?>" class="btn btn-default" title="Supermarkt verwijderen"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+
+                    </td>
+                </tr>
+            <?php } ?>
+        </table>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Voeg supermarkt toe</h2>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <?php
+                    $formSupermarkets->setAttributes(array(
+                        'class' => 'form-horizontal'
+                    ));
+                    ?>
+                    <?php echo $this->form()->openTag($formSupermarkets); ?>
+                    <div class="form-group">
+                        <?php echo $this->formLabel($formSupermarkets->get('name')); ?>
+                        <div class="col-sm-4 col-md-4 col-lg-4">
+                            <?php echo $this->formText($formSupermarkets->get('name')); ?>
+                        </div>
+                        <div class="col-sm-4 col-md-4 col-lg-4">
+                            <?php echo (count($formSupermarkets->getMessages('name')) > 0 ? $formSupermarkets->getMessages('name') : '&nbsp;' ) ?>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <?php echo $this->formLabel($formSupermarkets->get('website')); ?>
+                        <div class="col-sm-4 col-md-4 col-lg-4">
+                            <?php echo $this->formText($formSupermarkets->get('website')); ?>
+                        </div>
+                        <div class="col-sm-4 col-md-4 col-lg-4">
+                            <?php echo (count($formSupermarkets->getMessages('website')) > 0 ? $formSupermarkets->getMessages('website') : '&nbsp;' ) ?>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <button type="submit" id="submitSupermarket" class="btn btn-info">Opslaan</button> <a href="<?php echo $this->url('grocerySettings'); ?>" class="btn btn-default" title="Annuleren">Annuleren</a>
+                        </div>
+                    </div>
+                    <?php echo $this->form()->closeTag($formSupermarkets); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="row">
+    <hgroup class="col-sm-12 col-md-12 col-lg-12">
+        <h1>Product weetje toevoegen</h1>
+    </hgroup>
+</div>
+<?php
+$form->setAttributes(array(
+    'class' => 'form-horizontal'
+));
+?>
+<?php echo $this->form()->openTag($form); ?>
+<div class="form-group">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <button type="submit" id="submit" class="btn btn-info">Opslaan</button> <a href="<?php echo $this->url('groceryProductFact'); ?>" class="btn btn-default" title="Annuleren">Annuleren</a>
+    </div>
+</div>
+<div class="form-group">
+    <?php echo $this->formLabel($form->get('productFactTitle')); ?>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <?php echo $this->formText($form->get('productFactTitle')); ?>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <?php echo (count($form->getMessages('productFactTitle')) > 0 ? $form->getMessages('productFactTitle')['isEmpty'] : '&nbsp;' ) ?>
+    </div>
+</div>
+<div class="form-group">
+    <?php echo $this->formLabel($form->get('productFactDescription')); ?>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <?php echo $this->formTextarea($form->get('productFactDescription')); ?>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <?php echo (count($form->getMessages('productFactDescription')) > 0 ? $form->getMessages('productFactDescription') : '&nbsp;' ) ?>
+    </div>
+</div>
+<div class="form-group">
+    <?php echo $this->formLabel($form->get('product')); ?>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <?php echo $this->formSelect($form->get('product')); ?>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <?php echo (count($form->getMessages('product')) > 0 ? $form->getMessages('product')['isEmpty'] : '&nbsp;' ) ?>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <button type="submit" id="submit" class="btn btn-info">Opslaan</button> <a href="<?php echo $this->url('groceryProductFact'); ?>" class="btn btn-default" title="Annuleren">Annuleren</a>
+    </div>
+</div>
+<?php echo $this->form()->closeTag($form); ?>

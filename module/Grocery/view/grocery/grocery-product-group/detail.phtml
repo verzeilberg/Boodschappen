@@ -1,0 +1,43 @@
+<div class="row">
+    <hgroup class="col-sm-12 col-md-12 col-lg-12">
+        <h1><?php echo $this->translate('Product detail'); ?>: <?php echo $productGroup->getName(); ?></h1>
+    </hgroup>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <p><?php echo $productGroup->getDescription(); ?></p>
+    </div>
+    <hgroup class="col-sm-12 col-md-12 col-lg-12">
+        <h2><?php echo $this->translate('Products'); ?></h2>
+    </hgroup>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <?php
+        if (!empty($productGroup->getProducts())) {
+            ?>
+            <table class="table table-striped table-bordered" id="productTable">
+                <tr>
+                    <th>Productnummer</th>
+                    <th colspan="2">Naam</th>
+                </tr>
+                <?php
+                foreach ($productGroup->getProducts() AS $product) {
+                    ?>
+                    <tr>
+                        <td><?php echo $product->getProductNumber(); ?></td>
+                        <td><?php echo $product->getName(); ?></td>
+                        <td class="text-center">
+                            <a href="<?php echo $this->url('groceryProduct', array('action' => 'detail', 'id' => $product->getProductId())); ?>" class="btn btn-default" title="product bekijken"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                        </td>
+                    </tr>
+                    <?php
+                }
+                ?>
+            </table>
+            <?php
+        } else {
+            ?>
+            <p><br/>Nog geen producten in deze groep.</p>
+            <?php
+        }
+        ?>
+
+    </div>
+</div>

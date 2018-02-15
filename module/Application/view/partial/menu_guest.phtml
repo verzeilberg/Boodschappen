@@ -1,0 +1,41 @@
+<ul class="<?php echo $this->navigation()->menu()->getUlClass(); ?>">
+<?php
+foreach ($this->container as $page)
+{
+    $hasChildren = $page->hasPages();
+    if( ! $hasChildren)
+    {
+        ?>
+        <li><a href="<?php echo $page->getHref(); ?>" title="<?php echo $page->getLabel(); ?>">
+            
+            <?php if($page->getLabel() == 'Login'){ ?>
+                <span class="glyphicon glyphicon-log-in menuButtons" aria-hidden="true"></span>
+            <?php } else if($page->getLabel() == 'Uitloggen') { ?>
+                <span class="glyphicon glyphicon-log-out menuButtons" aria-hidden="true"></span>
+           <?php } else { ?>
+                <?php echo $page->getLabel(); ?>
+           <?php } ?>
+            </a></li>
+        <?php
+    }
+    else
+    {
+        ?>
+        <li class="dropdown">
+            <a href="<?php echo $page->getHref(); ?>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="<?php echo $page->getLabel(); ?>"><?php echo $page->getLabel(); ?><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            <?php
+            foreach($page->getPages() as $child)
+            {
+                ?>
+                <li><a href="<?php echo $child->getHref(); ?>" title="<?php echo $child->getLabel(); ?>"><?php echo $child->getLabel(); ?></a></li>
+                <?php
+            }
+            ?>
+            </ul>
+        </li>
+        <?php
+    }
+}
+?>
+</ul>

@@ -1,0 +1,367 @@
+<div class="row">
+
+    <hgroup class="col-sm-12 col-md-12 col-lg-12">
+
+        <h1>Product toevoegen</h1>
+
+    </hgroup>
+
+</div>
+
+<?php
+$form->setAttributes(array(
+    'class' => 'form-horizontal',
+    'enctype' => 'multipart/form-data'
+));
+?>
+
+<?php echo $this->form()->openTag($form); ?>
+
+<div class="row">
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+
+        <div class="form-group">
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+
+                <button type="submit" id="submit" class="btn btn-info">Opslaan</button> <a href="<?php echo $this->url('groceryProduct'); ?>" class="btn btn-default" title="Annuleren">Annuleren</a>
+
+            </div>
+
+        </div>
+
+        <button type="button" class="btn btn-primary btn-info" data-toggle="modal" data-target="#myModal2">
+
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <?php echo $this->translate('Add info from external URL'); ?>
+
+        </button>
+        <hr>
+        <h2><?php echo $this->translate('General information'); ?></h2>
+        <div class="form-group">
+
+            <?php echo $this->formLabel($form->get('productNumber')); ?>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo $this->formText($form->get('productNumber')); ?>
+
+            </div>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo (count($form->getMessages('name')) > 0 ? $form->getMessages('name')['isEmpty'] : '&nbsp;' ) ?>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <?php echo $this->formLabel($form->get('name')); ?>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo $this->formText($form->get('name')); ?>
+
+            </div>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo (count($form->getMessages('name')) > 0 ? $form->getMessages('name')['isEmpty'] : '&nbsp;' ) ?>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <?php echo $this->formLabel($form->get('description')); ?>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo $this->formTextarea($form->get('description')); ?>
+
+            </div>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo (count($form->getMessages('name')) > 0 ? $form->getMessages('name')['isEmpty'] : '&nbsp;' ) ?>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <?php echo $this->formLabel($form->get('price')); ?>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <span class="currencyinput"><span class="currency">&euro;</span><?php echo $this->formNumber($form->get('price')); ?></span>
+
+            </div>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo (count($form->getMessages('price')) > 0 ? $form->getMessages('price')['isEmpty'] : '&nbsp;' ) ?>
+
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <?php echo $this->formLabel($form->get('orderFrequenty')); ?>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo $this->formSelect($form->get('orderFrequenty')); ?>
+
+            </div>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo (count($form->getMessages('orderFrequenty')) > 0 ? $form->getMessages('orderFrequenty')['isEmpty'] : '&nbsp;' ) ?>
+
+            </div>
+
+        </div>
+        <hr>
+        <h2><?php echo $this->translate('Images'); ?></h2>
+        <div class="form-group">
+
+            <?php echo $this->formLabel($form->get('productImage')); ?>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+
+
+                <input type="text" name="externalURLfield" id="externalURLfield" class="form-control" style="display:none;" />
+
+                <span class="btn btn-default btn-file" id="localFile">
+
+                    Selecteer bestand...<?php echo $this->formFile($form->get('productImage')); ?>
+
+                </span>
+
+            </div>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo (count($form->getMessages('productImage')) > 0 ? $form->getMessages('productImage')['isEmpty'] : '&nbsp;' ) ?>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <?php echo $this->formLabel($formProductImage->get('nameImage')); ?>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo $this->formText($formProductImage->get('nameImage')); ?>
+
+            </div>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo (count($formProductImage->getMessages('nameImage')) > 0 ? $formProductImage->getMessages('nameImage')['isEmpty'] : '&nbsp;' ) ?>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <?php echo $this->formLabel($formProductImage->get('alt')); ?>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo $this->formText($formProductImage->get('alt')); ?>
+
+            </div>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo (count($formProductImage->getMessages('alt')) > 0 ? $formProductImage->getMessages('alt')['isEmpty'] : '&nbsp;' ) ?>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <?php echo $this->formLabel($formProductImage->get('descriptionImage')); ?>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo $this->formText($formProductImage->get('descriptionImage')); ?>
+
+            </div>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">
+
+                <?php echo (count($formProductImage->getMessages('descriptionImage')) > 0 ? $formProductImage->getMessages('descriptionImage')['isEmpty'] : '&nbsp;' ) ?>
+
+            </div>
+
+        </div>
+
+        <hr>
+        <h2><?php echo $this->translate('Product groups'); ?></h2>
+        <div class="form-group">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+
+                <?php echo $this->formMultiCheckbox($form->get('productGroups')); ?>
+
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+
+                <?php echo (count($form->getMessages('productGroups')) > 0 ? $form->getMessages('productGroups')['isEmpty'] : '&nbsp;' ) ?>
+
+            </div>
+
+        </div>
+        <hr>
+        <button type="button" class="btn btn-primary btn-info" data-toggle="modal" data-target="#myModal2">
+
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <?php echo $this->translate('Add info from external URL'); ?>
+
+        </button>
+
+        <br/><br/>
+
+        <div class="form-group">
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+
+                <button type="submit" id="submit" class="btn btn-info">Opslaan</button> <a href="<?php echo $this->url('groceryProduct'); ?>" class="btn btn-default" title="Annuleren">Annuleren</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<?php echo $this->form()->closeTag($form); ?>
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Voeg product informatie toe</h2>
+                <small>Gebruik een detail pagina van een product op de website van AH.</small>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label class="col-sm-4 col-md-4 col-lg-4 control-label" for="externalURL">URL</label>
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+                                <input class="form-control" type="text" value="" placeholder="URL" name="externalURL" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <button class="btn btn-primary btn-info" id="getURLInformation">Get product information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $(document).ready(function () {
+
+        tinymce.init({selector: 'textarea'});
+
+
+
+        $("#getURLInformation").on("click", function () {
+
+            var externalUrl = $('input[name="externalURL"]').val();
+
+            var ajaxURL = '/productAjax/getURLInformation';
+
+            $.ajax({
+                type: 'POST',
+                data: {
+                    externalUrl: externalUrl
+
+                },
+                url: ajaxURL,
+                contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                async: true,
+                success: function (data) {
+
+                    if (data.succes === true) {
+
+                        var productCategoryID = data.productDetails.category;
+                        if (productCategoryID > 0) {
+                            $("input:checkbox[value=" + productCategoryID + "]").attr("checked", true);
+                        }
+
+                        var productName = data.productDetails.name;
+
+                        var productDescription = data.productDetails.description;
+
+                        var productImageName = data.productDetails.imageTitle;
+
+                        var productImageURL = data.productDetails.imageURL;
+
+                        var productPrice = data.productDetails.price;
+
+                        $('input[name="name"]').val(productName);
+
+                        $('textarea[name="description"]').val(productDescription);
+
+                        tinymce.activeEditor.setContent(productDescription);
+
+                        $('input[name="price"]').val(productPrice);
+
+                        $('input[name="nameImage"]').val(productImageName);
+
+                        $('input[name="externalURLfield"]').val(productImageURL);
+
+                        $('input[name="externalURLfield"]').show();
+
+                        $('file[name="productImage"]').val('');
+
+                        $('#localFile').hide();
+
+                        $('#myModal2').modal('toggle');
+
+                        $('input[name="externalURL"]').val('');
+
+                    } else {
+
+                        $('#myModal2').modal('toggle');
+
+                        $('input[name="externalURL"]').val('');
+
+                        $('#localFile').show();
+
+                        $('input[name="externalURLfield"]').val('');
+
+                        $('input[name="externalURLfield"]').hide();
+
+                    }
+
+
+
+                }
+
+            });
+
+        });
+
+    });
+
+</script>
